@@ -1,6 +1,12 @@
 """Tools for the agent team."""
 
-from google.adk.tools import ToolContext
+from typing import Any, Protocol
+
+
+class ContextWithState(Protocol):
+    """Protocol for context objects with session state."""
+
+    session_state: dict[str, Any]
 
 
 def get_weather(city: str) -> dict[str, str]:
@@ -31,19 +37,19 @@ def get_weather(city: str) -> dict[str, str]:
     }
 
 
-def save_preference(context: ToolContext, key: str, value: str) -> str:
+def save_preference(context: ContextWithState, key: str, value: str) -> str:
     """Saves user preference to session state."""
     context.session_state[key] = value
     return f"Preference saved: {key} = {value}"
 
 
-def get_preference(context: ToolContext, key: str) -> str:
+def get_preference(context: ContextWithState, key: str) -> str:
     """Retrieves user preference from session state."""
     value = context.session_state.get(key, "No preference set")
     return f"Preference for {key}: {value}"
 
 
-def get_weather_with_memory(context: ToolContext, city: str) -> dict[str, str]:
+def get_weather_with_memory(context: ContextWithState, city: str) -> dict[str, str]:
     """Get weather and remember the last queried city."""
     # Save the city as a preference
     context.session_state["last_city"] = city
