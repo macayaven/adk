@@ -90,4 +90,4 @@ Thumbs.db
 uv.lock
 
 # Project specific
-.python-version
+.python-versionmulti_tool_agent/.env
