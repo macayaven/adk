@@ -129,9 +129,48 @@ uv run poe test
 4. Run `uv run poe test` to ensure tests pass
 5. Commit with descriptive message
 
+## Session History & Learning Notes
+
+### 2025-06-13: Initial Setup and CI/CD
+**Accomplishments:**
+- ✅ Created comprehensive project structure with multiple agents
+- ✅ Set up CI/CD pipeline with GitHub Actions
+- ✅ Integrated Jupyter support with custom kernel
+- ✅ Added LiteLLM for multi-provider support
+- ✅ Fixed all CI/CD issues (uv.lock, dependencies, type errors)
+- ✅ Addressed CodeRabbit review feedback
+
+**Key Learnings:**
+1. **uv.lock must be committed** - Don't gitignore it, needed for reproducible builds
+2. **Type annotations matter** - Created `ContextWithState` protocol for proper typing
+3. **API key warnings** - Added checks to warn when GOOGLE_API_KEY not set
+4. **Models in use**:
+   - multi_tool_agent: `gemini-1.5-pro-latest`
+   - live_agent: `gemini-2.0-flash-live-001`
+
+**Challenges Resolved:**
+- GitHub Actions failing due to missing uv.lock
+- Type errors with ToolContext and session_state
+- Proper dependency management with uv
+
+### Important Commands Discovered
+```bash
+# Create Jupyter kernel for project
+uv run python -m ipykernel install --user --name adk-1 --display-name "ADK-1 (Python 3.13)"
+
+# Run specific GitHub workflow checks
+gh run list --branch feat/add-agents-jupyter-litellm
+gh run view <run-id> --log-failed
+
+# Check PR status
+gh pr checks --watch=false
+```
+
 ## Next Steps and Improvements
-- Expand test coverage as new features are added
-- Add more specialized agents to the team
-- Implement integration tests
-- Add documentation for each agent type
-- Create more comprehensive examples
+- Expand test coverage with freezegun for time mocking
+- Add proper error handling with custom exceptions
+- Implement dataclasses for return types consistency
+- Create integration tests for agent interactions
+- Add more sophisticated agent capabilities
+- Explore agent-to-agent communication
+- Document agent behavior patterns
