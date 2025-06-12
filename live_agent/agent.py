@@ -17,6 +17,10 @@ load_dotenv(env_path)
 model_name = os.getenv("GEMINI_MODEL", "gemini-2.0-flash-live-001")
 print(f"Live agent using model: {model_name}")
 
+# Check if API key is available
+if not os.getenv("GOOGLE_API_KEY"):
+    print("Warning: GOOGLE_API_KEY not set. Agent may not function properly.")
+
 
 def echo_response(message: str) -> str:
     """Simple echo function for testing live interactions.

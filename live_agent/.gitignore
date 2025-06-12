@@ -12,7 +12,6 @@ env.bak/
 venv.bak/
 
 # Distribution / packaging
-.Python
 build/
 develop-eggs/
 dist/

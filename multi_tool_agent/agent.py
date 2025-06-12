@@ -16,6 +16,10 @@ load_dotenv(env_path)
 model_name = os.getenv("GEMINI_MODEL", "Not set")
 print(f"Multi-tool agent using model: {model_name}")
 
+# Check if API key is available
+if not os.getenv("GOOGLE_API_KEY"):
+    print("Warning: GOOGLE_API_KEY not set. Agent may not function properly.")
+
 
 def get_weather(city: str) -> dict[str, str]:
     """Retrieves the current weather report for a specified city.

@@ -6,7 +6,7 @@ This directory contains GitHub Actions workflows for continuous integration.
 
 This workflow runs on every push and pull request to ensure code quality. It includes:
 
-### Jobs:
+### Jobs
 
 1. **code-quality**: Runs formatting, linting, and type checking
    - Uses `uv` for dependency management
@@ -22,13 +22,13 @@ This workflow runs on every push and pull request to ensure code quality. It inc
    - Uses pytest to run all tests in the `tests/` directory
    - Can use `GOOGLE_API_KEY` from GitHub secrets if needed
 
-### Configuration:
+### Configuration
 
 - Python version: 3.13
 - Runs on: ubuntu-latest
 - Triggers: Push to main/develop, Pull requests to main/develop
 
-### Secrets Required:
+### Secrets Required
 
 - `GOOGLE_API_KEY` (optional): For tests that require Google API access
 
