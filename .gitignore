@@ -87,7 +87,6 @@ Thumbs.db
 
 # UV
 .uv/
-uv.lock
 
 # Project specific
 .python-versionmulti_tool_agent/.env
